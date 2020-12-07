@@ -1,27 +1,54 @@
 import React from "react";
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 const ViewImageScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View
         style={{
-          flexGrow: 0.1,
+          flex: 0.25,
           paddingLeft: 30,
           paddingRight: 30,
         }}
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View style={{ backgroundColor: "#fc5c65", width: 70, height: 70 }}>
-            <Button title={"red"} />
+          <View
+            style={{
+              backgroundColor: "#fc5c65",
+              width: 50,
+              height: 50,
+              justifyContent: "center",
+            }}
+          >
+            <Button title={""} />
           </View>
-          <View style={{ backgroundColor: "#4ECDC4", width: 70, height: 70 }}>
-            <Button title={"green"} />
+          <View
+            style={{
+              backgroundColor: "#4ECDC4",
+              width: 50,
+              height: 50,
+              justifyContent: "center",
+            }}
+          >
+            <Button title={""} />
           </View>
         </View>
       </View>
-      <View style={{ flexGrow: 1.2 }}></View>
-      <View style={{ flexGrow: 0.1 }}></View>
+      <View style={{ flex: 1 }}>
+        <Image
+          style={{ height: "100%", width: "100%" }}
+          resizeMode={"stretch"}
+          source={require("../assets/chair.jpg")}
+        />
+      </View>
+      <View style={{ flex: 0.25 }}></View>
     </SafeAreaView>
   );
 };
