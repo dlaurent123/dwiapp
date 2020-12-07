@@ -1,14 +1,23 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+  Button,
+  Alert,
+} from "react-native";
+import WelcomeScreen from "./features/WelcomeScreen";
 
 export default function App() {
-  let x = 1;
-  x.toExponential();
   return (
     <View style={styles.container}>
-      <Text>30 Days Of Code 1 </Text>
       <StatusBar style="auto" />
+      <WelcomeScreen />
     </View>
   );
 }
@@ -16,7 +25,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },
