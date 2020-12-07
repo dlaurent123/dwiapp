@@ -11,13 +11,15 @@ import {
   Button,
   Alert,
 } from "react-native";
+import ViewImageScreen from "./screens/ViewImageScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <WelcomeScreen />
+      <StatusBar style="inverted" />
+      {/* <WelcomeScreen /> */}
+      <ViewImageScreen />
     </View>
   );
 }
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
