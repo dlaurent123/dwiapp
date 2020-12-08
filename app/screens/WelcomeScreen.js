@@ -11,6 +11,7 @@ import {
   ImageBackground,
   SafeAreaView,
 } from "react-native";
+import AppButton from "../components/AppButton";
 
 const WelcomeScreen = () => {
   return (
@@ -38,24 +39,8 @@ const WelcomeScreen = () => {
           <View style={{ flex: 1 }}>{/* <Text>here</Text> */}</View>
         </SafeAreaView>
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
-          <View
-            style={{
-              backgroundColor: "#fc5c65",
-              height: 70,
-              justifyContent: "center",
-            }}
-          >
-            <Button title={"Register"} />
-          </View>
-          <View
-            style={{
-              backgroundColor: "#4ECDC4",
-              height: 70,
-              justifyContent: "center",
-            }}
-          >
-            <Button title={"Login"} />
-          </View>
+          <AppButton color={"#fc5c65"} title={"Login"} />
+          <AppButton color={"#4ECDC4"} title={"Register"} />
         </View>
       </View>
     </ImageBackground>
