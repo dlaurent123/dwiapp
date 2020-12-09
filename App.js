@@ -21,8 +21,8 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style={"inverted"} />
       {/* <WelcomeScreen /> */}
-      {/* <ViewImageScreen /> */}
-      <ListingDetails />
+      <ViewImageScreen />
+      {/* <ListingDetails /> */}
     </View>
   );
 }

@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ViewImageScreen = () => {
   return (
@@ -14,10 +15,14 @@ const ViewImageScreen = () => {
       <View style={styles.buttonContent}>
         <View style={styles.buttonContainer}>
           <View style={styles.redButtonContainer}>
-            <Button title={""} />
+            <MaterialCommunityIcons size={35} color="white" name="close" />
           </View>
           <View style={styles.greenButtonContainer}>
-            <Button title={""} />
+            <MaterialCommunityIcons
+              color="white"
+              size={35}
+              name="trash-can-outline"
+            />
           </View>
         </View>
       </View>
@@ -46,13 +51,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: { flexDirection: "row", justifyContent: "space-between" },
   redButtonContainer: {
-    backgroundColor: "#fc5c65",
     width: 50,
     height: 50,
     justifyContent: "center",
   },
   greenButtonContainer: {
-    backgroundColor: "#4ECDC4",
     width: 50,
     height: 50,
     justifyContent: "center",
