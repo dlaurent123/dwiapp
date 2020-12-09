@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import Card from "./app/components/Card";
 import ListingDetails from "./app/screens/ListingDetails";
+import Messaging from "./app/screens/Messaging";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
@@ -21,8 +22,9 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style={"inverted"} />
       {/* <WelcomeScreen /> */}
-      <ViewImageScreen />
+      {/* <ViewImageScreen /> */}
       {/* <ListingDetails /> */}
+      <Messaging />
     </View>
   );
 }
