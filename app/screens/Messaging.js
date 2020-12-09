@@ -22,7 +22,7 @@ const messagesArr = [
 
 const Messaging = () => {
   const [messages, setMessages] = useState(messagesArr);
-
+  const [refreshing, setRefreshing] = useState(false);
   const handleDelete = (message) => {
     setMessages(messages.filter((mess) => mess.id !== message.id));
   };
@@ -44,6 +44,17 @@ const Messaging = () => {
         )}
         keyExtractor={(message) => message.id.toString()}
         data={messages}
+        refreshing={refreshing}
+        onRefresh={() =>
+          setMessages([
+            {
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: require("../assets/man-image.webp"),
+            },
+          ])
+        }
       />
     </Screen>
   );
