@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 import ListItem from "../components/ListItem";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 import ListItemSeparator from "../components/ListItemSeparator";
 import Screen from "../components/Screen";
 
@@ -23,9 +24,11 @@ const Messaging = () => {
   return (
     <Screen>
       <FlatList
-        ItemSeparatorComponent={() => <ListItemSeparator />}
+        ItemSeparatorComponent={ListItemSeparator}
         renderItem={({ item }) => (
           <ListItem
+            rightActions={ListItemDeleteAction}
+            onPress={() => console.log()}
             image={item.image}
             subTitle={item.description}
             title={item.title}
