@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TouchableHighlight, Text } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 const AccountOptions = ({
   iconName,
@@ -9,7 +9,10 @@ const AccountOptions = ({
   title,
 }) => {
   return (
-    <TouchableHighlight>
+    <TouchableHighlight
+      onPress={() => console.log("")}
+      underlayColor={colors.medium}
+    >
       <View style={styles.container}>
         <View
           style={[
@@ -17,7 +20,7 @@ const AccountOptions = ({
             styles.iconContainer,
           ]}
         >
-          <MaterialIcons
+          <MaterialCommunityIcons
             title={title}
             color={iconColor}
             size={20}

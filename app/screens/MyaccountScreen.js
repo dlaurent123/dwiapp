@@ -25,7 +25,20 @@ const MyaccountScreen = () => {
           title={"My Listings"}
         />
         <ListItemSeparator />
-        <AccountOptions />
+        <AccountOptions
+          iconName={"email"}
+          iconBackgroundColor={colors.secondary}
+          iconColor={"white"}
+          title={"My Messages"}
+        />
+        <View style={styles.logoutContainer}>
+          <AccountOptions
+            iconName={"logout"}
+            iconBackgroundColor={"#ffe66d"}
+            iconColor={"white"}
+            title={"Log Out"}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -67,6 +80,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "grey",
     fontWeight: "400",
+  },
+
+  logoutContainer: {
+    marginVertical: 20,
   },
 });
 
