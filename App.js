@@ -14,6 +14,7 @@ import {
 import Card from "./app/components/Card";
 import ListingDetails from "./app/screens/ListingDetails";
 import Messaging from "./app/screens/Messaging";
+import MyaccountScreen from "./app/screens/MyaccountScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
@@ -24,7 +25,8 @@ export default function App() {
       {/* <WelcomeScreen /> */}
       {/* <ViewImageScreen /> */}
       {/* <ListingDetails /> */}
-      <Messaging />
+      {/* <Messaging /> */}
+      <MyaccountScreen />
     </View>
   );
 }
