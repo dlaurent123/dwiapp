@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, View, SafeAreaView, Image, Text } from "react-native";
+import AccountOptions from "../components/AccountOptions";
+import ListItemSeparator from "../components/ListItemSeparator";
 import colors from "../config/colors";
+
 const MyaccountScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
@@ -13,6 +16,16 @@ const MyaccountScreen = () => {
           <Text style={styles.name}>Nasir Dara</Text>
           <Text style={styles.email}>NasirD@gmail.com</Text>
         </View>
+      </View>
+      <View>
+        <AccountOptions
+          iconName={"format-list-bulleted"}
+          iconBackgroundColor={colors.primary}
+          iconColor={"white"}
+          title={"My Listings"}
+        />
+        <ListItemSeparator />
+        <AccountOptions />
       </View>
     </SafeAreaView>
   );
@@ -27,11 +40,11 @@ const styles = StyleSheet.create({
   userInfo: {
     backgroundColor: "white",
     width: "100%",
-    height: 105,
+    height: 100,
     flexDirection: "row",
     padding: 20,
     alignItems: "center",
-    marginVertical: 20,
+    marginVertical: 30,
   },
 
   textContainer: {
