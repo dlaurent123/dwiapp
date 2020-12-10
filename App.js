@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import Card from "./app/components/Card";
 import ListingDetails from "./app/screens/ListingDetails";
+import ListingsScreen from "./app/screens/ListingsScreen";
 import Messaging from "./app/screens/Messaging";
 import MyaccountScreen from "./app/screens/MyaccountScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
@@ -26,7 +27,8 @@ export default function App() {
       {/* <ViewImageScreen /> */}
       {/* <ListingDetails /> */}
       {/* <Messaging /> */}
-      <MyaccountScreen />
+      {/* <MyaccountScreen /> */}
+      <ListingsScreen />
     </View>
   );
 }
