@@ -21,7 +21,7 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style={"inverted"} />
+      <StatusBar style={"auto"} />
       {/* <WelcomeScreen /> */}
       {/* <ViewImageScreen /> */}
       {/* <ListingDetails /> */}
