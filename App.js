@@ -18,6 +18,8 @@ import Messaging from "./app/screens/Messaging";
 import MyaccountScreen from "./app/screens/MyaccountScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
+import Screen from "./app/components/Screen";
+import AppInput from "./app/components/AppInput";
 
 export default function App() {
   return (
@@ -28,7 +30,10 @@ export default function App() {
       {/* <ListingDetails /> */}
       {/* <Messaging /> */}
       {/* <MyaccountScreen /> */}
-      <ListingsScreen />
+      {/* <ListingsScreen /> */}
+      <Screen>
+        <AppInput icon={"email"} placeholder={"Username"} />
+      </Screen>
     </View>
   );
 }
