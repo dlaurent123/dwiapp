@@ -22,6 +22,7 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import Screen from "./app/components/Screen";
 import AppInput from "./app/components/AppInput";
 import AppPicker from "./app/components/AppPicker";
+import LoginScreen from "./app/screens/LoginScreen";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -41,16 +42,18 @@ export default function App() {
       {/* <Messaging /> */}
       {/* <MyaccountScreen /> */}
       {/* <ListingsScreen /> */}
-      <Screen>
-        <AppPicker
+      {/* <Screen> */}
+      {/* <AppPicker
           onSelectItem={(item) => setCategory(item)}
           items={categories}
           icon="apps"
           placeholder={"Category"}
           selectedItem={category}
-        />
-        <AppInput placeholder={"Email"} icon="email" />
-      </Screen>
+        /> */}
+      {/* <AppInput placeholder={"Email"} icon="email" /> */}
+
+      <LoginScreen />
+      {/* </Screen> */}
     </View>
   );
 }
