@@ -21,7 +21,7 @@ const AppPicker = ({
   selectedItem,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
-
+  console.log(selectedItem);
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -34,7 +34,7 @@ const AppPicker = ({
               name={icon}
             />
           )}
-          <Text style={styles.text}>
+          <Text style={[styles.text, { color: placeholder && colors.medium }]}>
             {selectedItem ? selectedItem.label : placeholder}
           </Text>
           <MaterialCommunityIcons
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 18,
     fontFamily: "Avenir",
-    color: colors.dark,
+    color: colors.medium,
   },
 
   text: {
