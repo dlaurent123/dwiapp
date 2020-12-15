@@ -42,7 +42,7 @@ const RegisterScreen = () => {
           name={"password"}
           placeholder={"Password"}
           secureTextEntry
-          textContentType="password"
+          textContentType="newPassword"
         />
         <SubmitButton title={"Register"} />
       </AppForm>
