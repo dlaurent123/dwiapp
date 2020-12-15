@@ -23,6 +23,7 @@ import Screen from "./app/components/Screen";
 import AppInput from "./app/components/AppInput";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -52,8 +53,10 @@ export default function App() {
         /> */}
       {/* <AppInput placeholder={"Email"} icon="email" /> */}
 
-      <LoginScreen />
+      {/* <LoginScreen /> */}
       {/* </Screen> */}
+
+      <RegisterScreen />
     </View>
   );
 }
