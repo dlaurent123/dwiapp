@@ -21,7 +21,7 @@ const AppPicker = ({
   selectedItem,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  console.log(selectedItem);
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>

@@ -12,7 +12,7 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().label("Title").required(),
   price: Yup.number().label("Price").min(1).max(1000),
   category: Yup.string().label("Catergory").required(),
-  description: Yup.string().label("Description").optional(),
+  description: Yup.string().label("Description").optional().nullable(),
 });
 
 const categories = [
@@ -29,7 +29,7 @@ const ListingEditScreen = () => {
           title: "",
           price: "",
           category: "",
-          description: "",
+          description: null,
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
@@ -40,6 +40,7 @@ const ListingEditScreen = () => {
           name={"title"}
           placeholder={"Title"}
           textContentType="none"
+          maxLength={255}
         />
         <AppFormFeild
           autoCapitalize={"none"}
@@ -57,6 +58,9 @@ const ListingEditScreen = () => {
         />
 
         <AppFormFeild
+          maxLength={255}
+          multiline
+          numberOfLines={3} //only works for android
           autoCapitalize={"none"}
           autoCorrect={false}
           name={"description"}
