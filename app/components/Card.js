@@ -6,7 +6,7 @@ const Card = ({ title, subTitle, image }) => {
     <View style={styles.card}>
       <Image resizeMode={"center"} style={styles.image} source={image} />
       <View style={styles.detail}>
-        <Text>{title}</Text>
+        <Text numberOfLines={4}>{title}</Text>
         <Text style={{ color: "green" }}>{subTitle}</Text>
       </View>
     </View>

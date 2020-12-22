@@ -41,7 +41,7 @@ export default function App() {
       {/* <WelcomeScreen /> */}
       {/* <ViewImageScreen /> */}
       {/* <ListingDetails /> */}
-      {/* <Messaging /> */}
+      <Messaging />
       {/* <MyaccountScreen /> */}
       {/* <ListingsScreen /> */}
       {/* <Screen> */}
@@ -58,7 +58,7 @@ export default function App() {
       {/* </Screen> */}
 
       {/* <RegisterScreen /> */}
-      <ListingEditScreen />
+      {/* <ListingEditScreen /> */}
     </View>
   );
 }
