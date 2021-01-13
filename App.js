@@ -43,7 +43,9 @@ export default function App() {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    requestPermission();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -53,7 +55,9 @@ export default function App() {
       {/* <ListingDetails /> */}
       {/* <Messaging /> */}
 
-      <Screen></Screen>
+      <Screen>
+        <Text>Hello</Text>
+      </Screen>
       {/* <MyaccountScreen /> */}
       {/* <ListingsScreen /> */}
       {/* <Screen> */}
