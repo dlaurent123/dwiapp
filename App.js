@@ -26,6 +26,7 @@ import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -35,7 +36,7 @@ const categories = [
 
 export default function App() {
   const [category, setCategory] = useState(categories[0]);
-
+  const [imageUri, setImageUri] = useState();
   const requestPermission = async () => {
     const res = await ImagePicker.requestCameraRollPermissionsAsync();
     if (!res.granted) {
@@ -47,6 +48,15 @@ export default function App() {
     requestPermission();
   }, []);
 
+  const selectImage = async () => {
+    const res = await ImagePicker.launchImageLibraryAsync();
+    if (!res.cancelled) {
+      {
+        setImageUri(res.uri);
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style={"auto"} />
@@ -56,7 +66,8 @@ export default function App() {
       {/* <Messaging /> */}
 
       <Screen>
-        <Text>Hello</Text>
+        <Button onPress={selectImage} title="Select Image" />
+        <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} />
       </Screen>
       {/* <MyaccountScreen /> */}
       {/* <ListingsScreen /> */}
