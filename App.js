@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -25,6 +25,7 @@ import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import * as ImagePicker from "expo-image-picker";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -35,13 +36,24 @@ const categories = [
 export default function App() {
   const [category, setCategory] = useState(categories[0]);
 
+  const requestPermission = async () => {
+    const res = await ImagePicker.requestCameraRollPermissionsAsync();
+    if (!res.granted) {
+      alert("You need to enable permission to access your photo library.");
+    }
+  };
+
+  useEffect(() => {}, []);
+
   return (
     <View style={styles.container}>
       <StatusBar style={"auto"} />
       {/* <WelcomeScreen /> */}
       {/* <ViewImageScreen /> */}
       {/* <ListingDetails /> */}
-      <Messaging />
+      {/* <Messaging /> */}
+
+      <Screen></Screen>
       {/* <MyaccountScreen /> */}
       {/* <ListingsScreen /> */}
       {/* <Screen> */}
