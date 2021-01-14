@@ -25,9 +25,9 @@ import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
-import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
-
+import ImageInput from "./app/components/ImageInput";
+import * as ImagePicker from "expo-image-picker";
 const categories = [
   { label: "Furniture", value: 1 },
   { label: "Clothing", value: 2 },
@@ -37,25 +37,6 @@ const categories = [
 export default function App() {
   const [category, setCategory] = useState(categories[0]);
   const [imageUri, setImageUri] = useState();
-  const requestPermission = async () => {
-    const res = await ImagePicker.requestCameraRollPermissionsAsync();
-    if (!res.granted) {
-      alert("You need to enable permission to access your photo library.");
-    }
-  };
-
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
-  const selectImage = async () => {
-    const res = await ImagePicker.launchImageLibraryAsync();
-    if (!res.cancelled) {
-      {
-        setImageUri(res.uri);
-      }
-    }
-  };
 
   return (
     <View style={styles.container}>
@@ -66,8 +47,12 @@ export default function App() {
       {/* <Messaging /> */}
 
       <Screen>
-        <Button onPress={selectImage} title="Select Image" />
-        <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} />
+        {/* <Button onPress={selectImage} title="Select Image" /> */}
+        {/* <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} /> */}
+        <ImageInput
+          imageUri={imageUri}
+          onChangeImage={(uri) => setImageUri(uri)}
+        />
       </Screen>
       {/* <MyaccountScreen /> */}
       {/* <ListingsScreen /> */}
