@@ -28,6 +28,7 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 import * as Permissions from "expo-permissions";
 import ImageInput from "./app/components/ImageInput";
 import * as ImagePicker from "expo-image-picker";
+import ImageInputList from "./app/components/ImageInputList";
 const categories = [
   { label: "Furniture", value: 1 },
   { label: "Clothing", value: 2 },
@@ -36,7 +37,21 @@ const categories = [
 
 export default function App() {
   const [category, setCategory] = useState(categories[0]);
-  const [imageUri, setImageUri] = useState();
+  const [imageUris, setImageUris] = useState([]);
+
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri]);
+  };
+  const handleRemove = (uri) => {
+    const newImageUris = () =>
+      imageUris.filter((el) => {
+        if (el !== uri) {
+          return el;
+        }
+      });
+
+    setImageUris(newImageUris);
+  };
 
   return (
     <View style={styles.container}>
@@ -49,9 +64,10 @@ export default function App() {
       <Screen>
         {/* <Button onPress={selectImage} title="Select Image" /> */}
         {/* <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} /> */}
-        <ImageInput
-          imageUri={imageUri}
-          onChangeImage={(uri) => setImageUri(uri)}
+        <ImageInputList
+          imageUris={imageUris}
+          onAddImage={handleAdd}
+          onRemoveImage={handleRemove}
         />
       </Screen>
       {/* <MyaccountScreen /> */}
