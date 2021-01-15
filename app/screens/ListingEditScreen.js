@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppForm,
   AppFormFeild,
@@ -13,7 +13,7 @@ import * as Location from "expo-location";
 const validationSchema = Yup.object().shape({
   title: Yup.string().label("Title").required(),
   price: Yup.number().label("Price").min(1).max(1000),
-  category: Yup.string().label("Catergory").required(),
+  category: Yup.object().label("Catergory").required(),
   description: Yup.string().label("Description").optional().nullable(),
   images: Yup.array().min(1, "Please select at least one image"),
 });
@@ -25,11 +25,21 @@ const categories = [
 ];
 
 const ListingEditScreen = () => {
+  const [location, setLocation] = useState();
+
   const getLocation = async () => {
-    const result = await Location.requestPermissionsAsync();
+    const { granted } = await Location.requestPermissionsAsync();
+    if (!granted) return;
+    const {
+      coords: { latitude, longitude },
+    } = await Location.getLastKnownPositionAsync();
+
+    setLocation(latitude, longitude);
   };
 
-  useEffect(() => {});
+  useEffect(() => {
+    getLocation();
+  });
 
   return (
     <Screen>
