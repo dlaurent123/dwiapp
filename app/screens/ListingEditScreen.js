@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   AppForm,
   AppFormFeild,
@@ -8,7 +8,7 @@ import {
 import * as Yup from "yup";
 import Screen from "../components/Screen";
 import FormImagePicker from "../components/Forms/FormImagePicker";
-import * as Location from "expo-location";
+import { useLocation } from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().label("Title").required(),
@@ -25,22 +25,6 @@ const categories = [
 ];
 
 const ListingEditScreen = () => {
-  const [location, setLocation] = useState();
-
-  const getLocation = async () => {
-    const { granted } = await Location.requestPermissionsAsync();
-    if (!granted) return;
-    const {
-      coords: { latitude, longitude },
-    } = await Location.getLastKnownPositionAsync();
-
-    setLocation(latitude, longitude);
-  };
-
-  useEffect(() => {
-    getLocation();
-  });
-
   return (
     <Screen>
       <AppForm
@@ -51,7 +35,7 @@ const ListingEditScreen = () => {
           description: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.log(location)}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />
