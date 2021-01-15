@@ -37,21 +37,6 @@ const categories = [
 
 export default function App() {
   const [category, setCategory] = useState(categories[0]);
-  const [imageUris, setImageUris] = useState([]);
-
-  const handleAdd = (uri) => {
-    setImageUris([...imageUris, uri]);
-  };
-  const handleRemove = (uri) => {
-    const newImageUris = () =>
-      imageUris.filter((el) => {
-        if (el !== uri) {
-          return el;
-        }
-      });
-
-    setImageUris(newImageUris);
-  };
 
   return (
     <View style={styles.container}>
@@ -61,15 +46,11 @@ export default function App() {
       {/* <ListingDetails /> */}
       {/* <Messaging /> */}
 
-      <Screen>
-        {/* <Button onPress={selectImage} title="Select Image" /> */}
-        {/* <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} /> */}
-        <ImageInputList
-          imageUris={imageUris}
-          onAddImage={handleAdd}
-          onRemoveImage={handleRemove}
-        />
-      </Screen>
+      {/* <Screen> */}
+      {/* <Button onPress={selectImage} title="Select Image" /> */}
+      {/* <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} /> */}
+      {/* </Screen> */}
+      <ListingEditScreen />
       {/* <MyaccountScreen /> */}
       {/* <ListingsScreen /> */}
       {/* <Screen> */}
