@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AppForm,
   AppFormFeild,
@@ -8,6 +8,7 @@ import {
 import * as Yup from "yup";
 import Screen from "../components/Screen";
 import FormImagePicker from "../components/Forms/FormImagePicker";
+import * as Location from "expo-location";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().label("Title").required(),
@@ -24,6 +25,12 @@ const categories = [
 ];
 
 const ListingEditScreen = () => {
+  const getLocation = async () => {
+    const result = await Location.requestPermissionsAsync();
+  };
+
+  useEffect(() => {});
+
   return (
     <Screen>
       <AppForm
