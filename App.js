@@ -30,20 +30,31 @@ import ImageInput from "./app/components/ImageInput";
 import * as ImagePicker from "expo-image-picker";
 import ImageInputList from "./app/components/ImageInputList";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 
-const Tweets = () => {
+const Link = () => {
+  const navigation = useNavigation();
+  return (
+    <Button
+      onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
+      title="Click"
+    />
+  );
+};
+
+const Tweets = ({ navigation }) => {
   return (
     <Screen>
       <Text>TWEETS</Text>
+      <Link />
     </Screen>
   );
 };
 
-const TweetDetails = () => {
+const TweetDetails = ({ route }) => {
   return (
     <Screen>
-      <Text>TWEETDETAILS</Text>
+      <Text>TWEETDETAILS {route.params.id}</Text>
     </Screen>
   );
 };
@@ -51,9 +62,22 @@ const TweetDetails = () => {
 const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="TweetDetails">
-      <Stack.Screen name="Tweets" component={Tweets} />
-      <Stack.Screen name="TweetDetails" component={TweetDetails} />
+    <Stack.Navigator
+      screenOptions={{ headerStyle: { backgroundColor: "blue" } }}
+      initialRouteName="Tweets"
+    >
+      <Stack.Screen
+        options={{ headerStyle: { backgroundColor: "red" } }}
+        name="Tweets"
+        component={Tweets}
+      />
+      <Stack.Screen
+        name="TweetDetails"
+        component={TweetDetails}
+        options={({ route }) => ({
+          title: route.params.id,
+        })}
+      />
     </Stack.Navigator>
   );
 };
