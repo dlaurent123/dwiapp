@@ -29,48 +29,77 @@ import * as Permissions from "expo-permissions";
 import ImageInput from "./app/components/ImageInput";
 import * as ImagePicker from "expo-image-picker";
 import ImageInputList from "./app/components/ImageInputList";
-const categories = [
-  { label: "Furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Electronics", value: 3 },
-];
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function App() {
-  const [category, setCategory] = useState(categories[0]);
-
+const Tweets = () => {
   return (
-    <View style={styles.container}>
-      <StatusBar style={"auto"} />
-      {/* <WelcomeScreen /> */}
-      {/* <ViewImageScreen /> */}
-      {/* <ListingDetails /> */}
-      {/* <Messaging /> */}
-
-      {/* <Screen> */}
-      {/* <Button onPress={selectImage} title="Select Image" /> */}
-      {/* <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} /> */}
-      {/* </Screen> */}
-      <ListingEditScreen />
-      {/* <MyaccountScreen /> */}
-      {/* <ListingsScreen /> */}
-      {/* <Screen> */}
-      {/* <AppPicker
-          onSelectItem={(item) => setCategory(item)}
-          items={categories}
-          icon="apps"
-          placeholder={"Category"}
-          selectedItem={category}
-        /> */}
-      {/* <AppInput placeholder={"Email"} icon="email" /> */}
-
-      {/* <LoginScreen /> */}
-      {/* </Screen> */}
-
-      {/* <RegisterScreen /> */}
-      {/* <ListingEditScreen /> */}
-    </View>
+    <Screen>
+      <Text>TWEETS</Text>
+    </Screen>
   );
-}
+};
+
+const TweetDetails = () => {
+  return (
+    <Screen>
+      <Text>TWEETDETAILS</Text>
+    </Screen>
+  );
+};
+
+const Stack = createStackNavigator();
+const StackNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName="TweetDetails">
+      <Stack.Screen name="Tweets" component={Tweets} />
+      <Stack.Screen name="TweetDetails" component={TweetDetails} />
+    </Stack.Navigator>
+  );
+};
+
+// export default function App() {
+//   return (
+//     <View style={styles.container}>
+//       <StatusBar style={"auto"} />
+//       {/* <WelcomeScreen /> */}
+//       {/* <ViewImageScreen /> */}
+//       {/* <ListingDetails /> */}
+//       {/* <Messaging /> */}
+
+//       {/* <Screen> */}
+//       {/* <Button onPress={selectImage} title="Select Image" /> */}
+//       {/* <Image style={{ width: 200, height: 200 }} source={{ uri: imageUri }} /> */}
+//       {/* </Screen> */}
+//       <ListingEditScreen />
+//       {/* <MyaccountScreen /> */}
+//       {/* <ListingsScreen /> */}
+//       {/* <Screen> */}
+//       {/* <AppPicker
+//           onSelectItem={(item) => setCategory(item)}
+//           items={categories}
+//           icon="apps"
+//           placeholder={"Category"}
+//           selectedItem={category}
+//         /> */}
+//       {/* <AppInput placeholder={"Email"} icon="email" /> */}
+
+//       {/* <LoginScreen /> */}
+//       {/* </Screen> */}
+
+//       {/* <RegisterScreen /> */}
+//       {/* <ListingEditScreen /> */}
+//     </View>
+//   );
+// }
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -80,3 +109,5 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
 });
+
+export default App;
