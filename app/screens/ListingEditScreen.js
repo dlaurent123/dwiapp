@@ -25,6 +25,7 @@ const categories = [
 ];
 
 const ListingEditScreen = () => {
+  const location = useLocation();
   return (
     <Screen>
       <AppForm

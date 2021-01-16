@@ -20,7 +20,7 @@ const useLocation = () => {
 
   useEffect(() => {
     getLocation();
-  });
+  }, []);
 
   return location;
 };
