@@ -72,7 +72,12 @@ const Account = () => (
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{ activeBackgroundColor: "red", activeTintColor: "white" }}
+      tabBarOptions={{
+        activeBackgroundColor: "red",
+        activeTintColor: "white",
+        inactiveBackgroundColor: "blue",
+        inactiveTintColor: "black",
+      }}
     >
       <Tab.Screen component={Tweets} name="Feed" />
       <Tab.Screen component={Account} name="Account" />
