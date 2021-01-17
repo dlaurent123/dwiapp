@@ -80,7 +80,7 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Screen
-        component={Tweets}
+        component={StackNavigator}
         name="Feed"
         options={{
           tabBarIcon: ({ size, color }) => (
