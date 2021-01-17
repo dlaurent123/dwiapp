@@ -32,7 +32,7 @@ import ImageInputList from "./app/components/ImageInputList";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 const Link = () => {
   const navigation = useNavigation();
   return (
