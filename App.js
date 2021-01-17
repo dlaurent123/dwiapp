@@ -31,6 +31,7 @@ import * as ImagePicker from "expo-image-picker";
 import ImageInputList from "./app/components/ImageInputList";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -60,6 +61,23 @@ const TweetDetails = ({ route }) => {
 };
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const Account = () => (
+  <Screen>
+    <Text>Account</Text>
+  </Screen>
+);
+
+const TabNavigator = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen component={Tweets} name="Feed" />
+      <Tab.Screen component={Account} name="Account" />
+    </Tab.Navigator>
+  );
+};
+
 const StackNavigator = () => {
   return (
     <Stack.Navigator
@@ -120,7 +138,7 @@ const StackNavigator = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <StackNavigator />
+      <TabNavigator />
     </NavigationContainer>
   );
 };
