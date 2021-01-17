@@ -71,7 +71,9 @@ const Account = () => (
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{ activeBackgroundColor: "red", activeTintColor: "white" }}
+    >
       <Tab.Screen component={Tweets} name="Feed" />
       <Tab.Screen component={Account} name="Account" />
     </Tab.Navigator>
