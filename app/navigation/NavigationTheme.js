@@ -3,9 +3,9 @@ import colors from "../config/colors";
 
 export default {
   ...DefaultTheme,
-  color: {
+  colors: {
     ...DefaultTheme.colors,
-    primary: colors.primary,
-    background: colors.white,
+    primary: "red",
+    background: "white",
   },
 };
