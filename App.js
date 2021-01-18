@@ -35,6 +35,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
+import Appnavigator from "./app/navigation/Appnavigator";
 const Link = () => {
   const navigation = useNavigation();
   return (
@@ -155,7 +156,8 @@ const StackNavigator = () => {
 const App = () => {
   return (
     <NavigationContainer theme={navigationTheme}>
-      <AuthNavigator />
+      {/* <AuthNavigator /> */}
+      <Appnavigator />
     </NavigationContainer>
   );
 };
