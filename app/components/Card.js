@@ -1,15 +1,24 @@
 import React from "react";
-import { View, StyleSheet, Image, Text, StatusBar } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  StatusBar,
+  TouchableWithoutFeedback,
+} from "react-native";
 
-const Card = ({ title, subTitle, image }) => {
+const Card = ({ title, subTitle, image, onPress }) => {
   return (
-    <View style={styles.card}>
-      <Image resizeMode={"center"} style={styles.image} source={image} />
-      <View style={styles.detail}>
-        <Text numberOfLines={4}>{title}</Text>
-        <Text style={{ color: "green" }}>{subTitle}</Text>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.card}>
+        <Image resizeMode={"center"} style={styles.image} source={image} />
+        <View style={styles.detail}>
+          <Text numberOfLines={4}>{title}</Text>
+          <Text style={{ color: "green" }}>{subTitle}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

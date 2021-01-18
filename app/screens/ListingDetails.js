@@ -1,13 +1,14 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 import ListItem from "../components/ListItem";
-const ListingDetails = ({ props }) => {
+const ListingDetails = ({ route }) => {
+  const listing = route.params;
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/chair.jpg")} />
+      <Image style={styles.image} source={listing.image} />
       <View style={styles.details}>
-        <Text style={styles.title}>{"Chair for sale"}</Text>
-        <Text style={styles.price}>{"$100"}</Text>
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.price}>{listing.price}</Text>
         <View style={styles.userContainer}>
           <ListItem
             subTitle={"5 Listings"}

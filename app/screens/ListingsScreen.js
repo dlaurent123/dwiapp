@@ -19,14 +19,15 @@ const listings = [
   },
 ];
 
-const ListingsScreen = () => {
+const ListingsScreen = ({ navigation }) => {
   return (
     <Screen style={styles.screen}>
       <FlatList
         renderItem={({ item }) => (
           <Card
-            subTitle={`$${item.price}`}
+            onPress={() => navigation.navigate("ListingDetails", item)}
             image={item.image}
+            subTitle={`$${item.price}`}
             title={item.title}
           />
         )}
