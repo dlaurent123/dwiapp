@@ -12,6 +12,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import AppButton from "../components/AppButton";
+import routes from "../navigation/routes";
 
 const WelcomeScreen = ({ navigation }) => {
   return (
@@ -49,12 +50,12 @@ const WelcomeScreen = ({ navigation }) => {
           <AppButton
             color={"#fc5c65"}
             title={"Login"}
-            onPress={() => navigation.navigate("Login")}
+            onPress={() => navigation.navigate(routes.LOGIN)}
           />
           <AppButton
             color={"#4ECDC4"}
             title={"Register"}
-            onPress={() => navigation.navigate("Register")}
+            onPress={() => navigation.navigate(routes.REGISTER)}
           />
         </View>
       </View>

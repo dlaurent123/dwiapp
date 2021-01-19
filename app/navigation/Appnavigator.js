@@ -5,6 +5,8 @@ import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NewListingButton from "../navigation/NewListingButton";
+import routes from "../navigation/routes";
+
 const Tab = createBottomTabNavigator();
 
 const Appnavigator = () => {
@@ -25,7 +27,7 @@ const Appnavigator = () => {
         options={({ navigation }) => ({
           tabBarButton: () => (
             <NewListingButton
-              onPress={() => navigation.navigate("ListingEditScreen")}
+              onPress={() => navigation.navigate(routes.LISTING_EDIT_SCREEN)}
             />
           ),
           tabBarIcon: ({ color, size }) => (
