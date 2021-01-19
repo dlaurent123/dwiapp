@@ -13,10 +13,11 @@ const menueItems = [
   {
     title: "My Messages",
     icon: { name: "email", backgroundColor: colors.secondary },
+    targetScreen: "Messaging",
   },
 ];
 
-const MyaccountScreen = () => {
+const MyaccountScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -31,7 +32,7 @@ const MyaccountScreen = () => {
           ItemSeparatorComponent={ListItemSeparator}
           renderItem={({ item }) => (
             <ListItem
-              onPress={() => console.log("")}
+              onPress={() => navigation.navigate(item.targetScreen)}
               title={item.title}
               IconComponent={
                 <Icon
