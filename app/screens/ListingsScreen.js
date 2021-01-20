@@ -11,6 +11,7 @@ const ListingsScreen = ({ navigation }) => {
 
   const loadListings = async () => {
     const res = await listingsAPI.getListings();
+    // debugger;
 
     setListings(res.data);
   };
