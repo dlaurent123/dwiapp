@@ -8,11 +8,15 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-const Card = ({ title, subTitle, image, onPress }) => {
+const Card = ({ title, subTitle, imageUrl, onPress }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image resizeMode={"center"} style={styles.image} source={image} />
+        <Image
+          resizeMode={"center"}
+          style={styles.image}
+          source={{ uri: imageUrl }}
+        />
         <View style={styles.detail}>
           <Text numberOfLines={4}>{title}</Text>
           <Text style={{ color: "green" }}>{subTitle}</Text>
