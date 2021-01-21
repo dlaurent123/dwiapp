@@ -28,10 +28,12 @@ const categories = [
 const ListingEditScreen = () => {
   const location = useLocation();
 
-  const handleSubmit = (listing) => {
-    const res = listingAPI.addListing({ ...listing, location });
-
-    if (!res.ok) return alert("Could not save listing.");
+  const handleSubmit = async (listing) => {
+    const res = await listingAPI.addListing({ ...listing, location });
+    if (!res.ok) {
+      console.log();
+      return alert("Could not save listing.");
+    }
     alert("Success!");
   };
 
