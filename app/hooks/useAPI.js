@@ -5,8 +5,8 @@ const useAPI = (apiFunction) => {
   const [hasError, setError] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const request = async () => {
-    const res = await apiFunction();
+  const request = async (...args) => {
+    const res = await apiFunction(...args);
     setIsLoading(false);
 
     if (!res.ok) return setError(true);
