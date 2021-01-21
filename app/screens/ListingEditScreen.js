@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppForm,
   AppFormFeild,
@@ -7,6 +7,7 @@ import {
 } from "../components/Forms/index";
 import * as Yup from "yup";
 import Screen from "../components/Screen";
+import UploadScreen from "../screens/UploadScreen";
 import FormImagePicker from "../components/Forms/FormImagePicker";
 import { useLocation } from "../hooks/useLocation";
 import listingAPI from "../api/listings";
@@ -27,18 +28,26 @@ const categories = [
 
 const ListingEditScreen = () => {
   const location = useLocation();
+  const [uploadVisible, setUplaodVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (listing) => {
-    const res = await listingAPI.addListing({ ...listing, location });
+    setUplaodVisible(true);
+    const res = await listingAPI.addListing(
+      { ...listing, location },
+      (progress) => setProgress(progress)
+    );
+    setUplaodVisible(false);
+
     if (!res.ok) {
       console.log();
       return alert("Could not save listing.");
     }
     alert("Success!");
   };
-
   return (
     <Screen>
+      <UploadScreen progress={progress} visible={uploadVisible} />
       <AppForm
         initialValues={{
           title: "",
