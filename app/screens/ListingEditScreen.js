@@ -66,12 +66,14 @@ const ListingEditScreen = () => {
           name={"price"}
           placeholder={"Price"}
           textContentType="none"
+          width={120}
         />
 
         <AppFormPicker
           items={categories}
           name={"category"}
           placeholder={"Category"}
+          width={"50%"}
         />
 
         <AppFormFeild

@@ -2,9 +2,9 @@ import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
-const AppInput = ({ icon, ...otherProps }) => {
+const AppInput = ({ icon, width = "100%", ...otherProps }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width: width }]}>
       {icon && (
         <MaterialCommunityIcons
           style={styles.icon}

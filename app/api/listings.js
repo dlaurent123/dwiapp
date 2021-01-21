@@ -22,7 +22,9 @@ const addListing = (listing) => {
   if (listing.location)
     data.append("location", JSON.stringify(listing.location));
 
-  return client.post(endpoint, data);
+  return client.post(endpoint, data, {
+    onUploadProgress: (progress) => console.log(progress),
+  });
 };
 
 export default {
