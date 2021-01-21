@@ -23,7 +23,8 @@ const addListing = (listing, onUploadProgress) => {
     data.append("location", JSON.stringify(listing.location));
 
   return client.post(endpoint, data, {
-    onUploadProgress: (progress) => console.log(progress),
+    onUploadProgress: (progress) =>
+      onUploadProgress(progress.loaded / progress.total),
   });
 };
 

@@ -3,6 +3,8 @@ import { View, StyleSheet, Image, Text } from "react-native";
 import ListItem from "../components/ListItem";
 const ListingDetails = ({ route }) => {
   const listing = route.params;
+
+  console.log(listing);
   return (
     <View>
       <Image style={styles.image} source={listing.image} />
