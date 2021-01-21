@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Modal, Text } from "react-native";
+import { View, StyleSheet, Modal } from "react-native";
 import Progress from "react-native-progress/Bar";
 import colors from "../config/colors";
 import LottieView from "lottie-react-native";
