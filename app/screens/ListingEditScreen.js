@@ -38,17 +38,19 @@ const ListingEditScreen = () => {
       { ...listing, location },
       (progress) => setProgress(progress)
     );
-    setUplaodVisible(false);
 
     if (!res.ok) {
-      console.log();
+      setUplaodVisible(false);
       return alert("Could not save listing.");
     }
-    alert("Success!");
   };
   return (
     <Screen>
-      <UploadScreen progress={progress} visible={uploadVisible} />
+      <UploadScreen
+        onDone={() => setUplaodVisible(false)}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <AppForm
         initialValues={{
           title: "",
