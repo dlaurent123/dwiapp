@@ -4,7 +4,6 @@ import ListItem from "../components/ListItem";
 const ListingDetails = ({ route }) => {
   const listing = route.params;
 
-  console.log(listing);
   return (
     <View>
       <Image style={styles.image} source={{ uri: listing.images[0].url }} />
