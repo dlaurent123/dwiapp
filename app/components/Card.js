@@ -8,11 +8,15 @@ import {
 } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 
-const Card = ({ title, subTitle, imageUrl, onPress }) => {
+const Card = ({ title, subTitle, imageUrl, onPress, thumbnailUrl }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image resizeMode={"center"} style={styles.image} uri={imageUrl} />
+        <Image
+          style={styles.image}
+          preview={{ uri: thumbnailUrl }}
+          uri={imageUrl}
+        />
         <View style={styles.detail}>
           <Text numberOfLines={4}>{title}</Text>
           <Text style={{ color: "green" }}>{subTitle}</Text>
