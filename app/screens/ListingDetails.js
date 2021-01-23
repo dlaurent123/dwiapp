@@ -1,12 +1,19 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import ListItem from "../components/ListItem";
+import { Image } from "react-native-expo-image-cache";
+
 const ListingDetails = ({ route }) => {
   const listing = route.params;
 
   return (
     <View>
-      <Image style={styles.image} source={{ uri: listing.images[0].url }} />
+      <Image
+        style={styles.image}
+        tint="light"
+        preview={{ uri: listing.images[0].thumbnailUrl }}
+        uri={listing.images[0].url}
+      />
       <View style={styles.details}>
         <Text style={styles.title}>{listing.title}</Text>
         <Text style={styles.price}>{listing.price}</Text>
