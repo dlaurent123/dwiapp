@@ -34,6 +34,7 @@ const ListingsScreen = ({ navigation }) => {
             imageUrl={item.images[0].url}
             subTitle={`$${item.price}`}
             title={item.title}
+            thumbnailUrl={item.images[0].thumbnailUrl}
           />
         )}
         keyExtractor={(listings) => listings.id.toString()}
