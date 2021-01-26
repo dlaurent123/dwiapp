@@ -3,6 +3,7 @@ import { Image, StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import { AppFormFeild, SubmitButton, AppForm } from "../components/Forms/index";
 import * as Yup from "yup";
+import { login } from "../utiliy/firebaseFunctions";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
