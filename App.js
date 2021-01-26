@@ -161,8 +161,8 @@ const App = () => {
     <>
       <OfflineNotice />
       <NavigationContainer theme={navigationTheme}>
-        {/* <AuthNavigator /> */}
-        <Appnavigator />
+        <AuthNavigator />
+        {/* <Appnavigator /> */}
       </NavigationContainer>
     </>
   );
