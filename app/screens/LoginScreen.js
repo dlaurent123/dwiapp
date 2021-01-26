@@ -1,24 +1,34 @@
 import React from "react";
 import { Image, StyleSheet } from "react-native";
 import Screen from "../components/Screen";
-import { AppFormFeild, SubmitButton, AppForm } from "../components/Forms/index";
+import {
+  AppFormFeild,
+  SubmitButton,
+  AppForm,
+  ErrorMessage,
+} from "../components/Forms/index";
 import * as Yup from "yup";
 import { logIn } from "../utiliy/firebaseFunctions";
+import { useState } from "react/cjs/react.development";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
-const onSubmit = async ({ email, password }) => {
-  try {
-    await logIn(email, password);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const LoginScreen = () => {
+  const [errorMessage, setError] = useState(null);
+  const [loginFailed, setLoginFailed] = useState(false);
+
+  const onSubmit = async ({ email, password }) => {
+    try {
+      await logIn(email, password);
+    } catch (error) {
+      setError(error.message);
+      setLoginFailed(true);
+    }
+  };
+
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
@@ -27,6 +37,7 @@ const LoginScreen = () => {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
+        <ErrorMessage visible={loginFailed} error={errorMessage} />
         <AppFormFeild
           autoCapitalize="none"
           autoCorrect={false}
