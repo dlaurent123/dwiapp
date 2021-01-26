@@ -3,12 +3,20 @@ import { Image, StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import { AppFormFeild, SubmitButton, AppForm } from "../components/Forms/index";
 import * as Yup from "yup";
-import { login } from "../utiliy/firebaseFunctions";
+import { logIn } from "../utiliy/firebaseFunctions";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
+
+const onSubmit = async ({ email, password }) => {
+  try {
+    await logIn(email, password);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const LoginScreen = () => {
   return (
@@ -16,7 +24,7 @@ const LoginScreen = () => {
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <AppForm
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         <AppFormFeild

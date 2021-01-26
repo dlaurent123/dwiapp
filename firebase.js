@@ -1,28 +1,17 @@
 import app from "firebase/app";
 import "firebase/auth";
-
-const {
-  REACT_APP_APIKEY,
-  REACT_APP_AUTHDOMAIN,
-  REACT_APP_PROJECTID,
-  REACT_APP_STORAGEBUCKET,
-  REACT_APP_MESSAGINGSENDERID,
-  REACT_APP_APPID,
-  REACT_APP_MEASUREMENTID,
-} = process.env;
-
+import { env } from "./environment";
 
 const config = {
-    apiKey = REACT_APP_APIKEY,
-    authDomain = REACT_APP_AUTHDOMAIN,
-    projectId = REACT_APP_PROJECTID,
-    storageBucket = REACT_APP_STORAGEBUCKET,
-    messagingSenderId = REACT_APP_MESSAGINGSENDERID,
-    appId = REACT_APP_APPID,
-    measurementId = REACT_APP_MEASUREMENTID
-}
-
+  apiKey: env.API_KEY,
+  authDomain: env.AUTH_DOMAIN,
+  projectId: env.PROJECT_ID,
+  storageBucket: env.STORAGE_BUCKET,
+  messagingSenderId: env.MESSAGING_SENDER_ID,
+  appId: env.APP_ID,
+  measurementId: env.MEASUREMENT_ID,
+};
 
 app.initializeApp(config);
 
-export default app
+export default app;
