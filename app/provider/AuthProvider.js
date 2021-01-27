@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { createContext, useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import firebase from "../../firebase";
 import { getAuthToken } from "../utiliy/firebaseFunctions";
-const AuthContext = React.createContext();
+
+export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
   const [token, setToken] = useState(null);
 
   const updateUser = (user) => {
@@ -20,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     return () => firebase.auth().onAuthStateChanged(updateUser);
-  });
+  }, []);
 
   return (
     <AuthContext.Provider value={{ currentUser, token }}>

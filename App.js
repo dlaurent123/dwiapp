@@ -39,6 +39,8 @@ import Appnavigator from "./app/navigation/Appnavigator";
 import routes from "./app/navigation/routes";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthProvider from "./app/provider/AuthProvider";
+import { useContext } from "react";
+import AuthContext from "./app/provider/AuthProvider";
 
 // const Link = () => {
 //   const navigation = useNavigation();
@@ -158,13 +160,16 @@ import AuthProvider from "./app/provider/AuthProvider";
 // }
 
 const App = () => {
+  const context = useContext(AuthContext);
+  const user = null;
+
+  console.log(context);
   return (
     <>
       <AuthProvider>
         <OfflineNotice />
         <NavigationContainer theme={navigationTheme}>
-          <AuthNavigator />
-          {/* <Appnavigator /> */}
+          {user ? <Appnavigator /> : <AuthNavigator />}
         </NavigationContainer>
       </AuthProvider>
     </>
