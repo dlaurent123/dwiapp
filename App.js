@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -38,10 +38,10 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import Appnavigator from "./app/navigation/Appnavigator";
 import routes from "./app/navigation/routes";
 import OfflineNotice from "./app/components/OfflineNotice";
-import AuthProvider from "./app/provider/AuthProvider";
-import { useContext } from "react";
-import AuthContext from "./app/provider/AuthProvider";
-
+import firebase from "./firebase";
+import Index from "./app/Index";
+import { AuthContext } from "./app/context";
+import { getAuthToken } from "./app/utiliy/firebaseFunctions";
 // const Link = () => {
 //   const navigation = useNavigation();
 //   return (
@@ -159,19 +159,33 @@ import AuthContext from "./app/provider/AuthProvider";
 //   );
 // }
 
-const App = () => {
-  const context = useContext(AuthContext);
-  const user = null;
+export const AuthContextt = createContext();
 
-  console.log(context);
+const App = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [token, setToken] = useState(null);
+
+  const updateUser = (user) => {
+    console.log(user, "here");
+    if (user) {
+      const { email, uid } = user;
+      setCurrentUser({ email, id: uid });
+      getAuthToken().then((token) => {
+        setToken(token);
+      });
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(updateUser);
+    return unsubscribe;
+  }, []);
+
   return (
     <>
-      <AuthProvider>
-        <OfflineNotice />
-        <NavigationContainer theme={navigationTheme}>
-          {user ? <Appnavigator /> : <AuthNavigator />}
-        </NavigationContainer>
-      </AuthProvider>
+      <AuthContext.Provider value={{ currentUser, token }}>
+        <Index />
+      </AuthContext.Provider>
     </>
   );
 };
