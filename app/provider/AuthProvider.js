@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    return (unsubscribe = () => firebase.auth().onAuthStateChanged(updateUser));
+    return () => firebase.auth().onAuthStateChanged(updateUser);
   });
 
   return (

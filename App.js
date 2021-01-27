@@ -38,6 +38,7 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import Appnavigator from "./app/navigation/Appnavigator";
 import routes from "./app/navigation/routes";
 import OfflineNotice from "./app/components/OfflineNotice";
+import AuthProvider from "./app/provider/AuthProvider";
 
 // const Link = () => {
 //   const navigation = useNavigation();
@@ -159,11 +160,13 @@ import OfflineNotice from "./app/components/OfflineNotice";
 const App = () => {
   return (
     <>
-      <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
-        <AuthNavigator />
-        {/* <Appnavigator /> */}
-      </NavigationContainer>
+      <AuthProvider>
+        <OfflineNotice />
+        <NavigationContainer theme={navigationTheme}>
+          <AuthNavigator />
+          {/* <Appnavigator /> */}
+        </NavigationContainer>
+      </AuthProvider>
     </>
   );
 };
