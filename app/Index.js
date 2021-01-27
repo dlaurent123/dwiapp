@@ -9,7 +9,6 @@ import { AuthContext } from "../app/context";
 const Index = () => {
   const { currentUser, token } = useContext(AuthContext);
 
-  console.log(currentUser, token);
   return (
     <>
       <OfflineNotice />

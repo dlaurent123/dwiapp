@@ -159,20 +159,19 @@ import { getAuthToken } from "./app/utiliy/firebaseFunctions";
 //   );
 // }
 
-export const AuthContextt = createContext();
-
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(null);
 
   const updateUser = (user) => {
-    console.log(user, "here");
     if (user) {
       const { email, uid } = user;
       setCurrentUser({ email, id: uid });
       getAuthToken().then((token) => {
         setToken(token);
       });
+    } else {
+      setCurrentUser(null);
     }
   };
 

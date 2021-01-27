@@ -4,6 +4,7 @@ import Icon from "../components/Icon";
 import ListItem from "../components/ListItem";
 import ListItemSeparator from "../components/ListItemSeparator";
 import colors from "../config/colors";
+import { logOut } from "../utiliy/firebaseFunctions";
 
 const menueItems = [
   {
@@ -48,7 +49,7 @@ const MyaccountScreen = ({ navigation }) => {
       </View>
 
       <ListItem
-        onPress={() => console.log("")}
+        onPress={() => logOut()}
         IconComponent={<Icon backgroundColor="#ffe66d" name="logout" />}
         title={"Log Out"}
       />
