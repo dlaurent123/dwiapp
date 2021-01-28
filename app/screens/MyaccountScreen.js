@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, SafeAreaView, FlatList } from "react-native";
 import Icon from "../components/Icon";
 import ListItem from "../components/ListItem";
 import ListItemSeparator from "../components/ListItemSeparator";
 import colors from "../config/colors";
+import { AuthContext } from "../context";
 import { logOut } from "../utiliy/firebaseFunctions";
 
 const menueItems = [
@@ -19,12 +20,14 @@ const menueItems = [
 ];
 
 const MyaccountScreen = ({ navigation }) => {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <SafeAreaView style={styles.container}>
       <View>
         <ListItem
           image={require("../assets/man-image.webp")}
-          subTitle={"nasirdara@gmail.com"}
+          subTitle={currentUser.email}
           title={"Nasir Dara"}
         />
       </View>
