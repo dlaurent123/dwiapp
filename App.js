@@ -4,8 +4,7 @@ import firebase from "./firebase";
 import Index from "./app/Index";
 import { AuthContext } from "./app/context";
 import { getAuthToken } from "./app/utiliy/firebaseFunctions";
-import { AppLoading } from "expo";
-import LoadingScreen from "./app/screens/LoadingScreen";
+import AppLoading from "expo-app-loading";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -31,7 +30,7 @@ const App = () => {
     return unsubscribe;
   }, []);
 
-  if (loading) return <LoadingScreen />;
+  if (loading) return <AppLoading />;
 
   return (
     <>
