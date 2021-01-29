@@ -10,6 +10,12 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
+const registerUser = async (email, name) => {
+  try {
+    await signUp();
+  } catch (error) {}
+};
+
 const RegisterScreen = () => {
   return (
     <Screen>
