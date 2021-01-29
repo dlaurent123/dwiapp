@@ -1,7 +1,7 @@
 import React from "react";
 import { AppForm, AppFormFeild, SubmitButton } from "../components/Forms";
 import Screen from "../components/Screen";
-import { signUp } from "../utiliy/firebaseFunctions";
+import { signUp, db } from "../utiliy/firebaseFunctions";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
@@ -10,10 +10,23 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-const registerUser = async (email, name) => {
+const registerUser = ({ email, password, name }) => {
   try {
-    await signUp();
-  } catch (error) {}
+    signUp(email, password).then((user) => {
+      db.collection("users")
+        .doc(toString(user.user.uid))
+        .set({
+          name,
+          email,
+          uid: user.user.uid,
+        })
+        .then(() => {
+          console.log("docment created");
+        });
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const RegisterScreen = () => {
@@ -21,7 +34,7 @@ const RegisterScreen = () => {
     <Screen>
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={registerUser}
         validationSchema={validationSchema}
       >
         <AppFormFeild
