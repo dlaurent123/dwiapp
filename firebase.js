@@ -1,6 +1,7 @@
 import app from "firebase/app";
 import "firebase/auth";
 import { env } from "./environment";
+import "firebase/firebase-firestore";
 
 const config = {
   apiKey: env.API_KEY,
