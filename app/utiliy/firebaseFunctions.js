@@ -9,3 +9,5 @@ export const logIn = (email, password) =>
 export const logOut = () => firebase.auth().signOut();
 
 export const getAuthToken = () => firebase.auth().currentUser.getIdToken(false);
+
+export const db = firebase.firestore();
