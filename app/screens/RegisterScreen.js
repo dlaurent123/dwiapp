@@ -1,6 +1,7 @@
 import React from "react";
 import { AppForm, AppFormFeild, SubmitButton } from "../components/Forms";
 import Screen from "../components/Screen";
+import { signUp } from "../utiliy/firebaseFunctions";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
