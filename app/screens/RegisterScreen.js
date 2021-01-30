@@ -13,16 +13,11 @@ const validationSchema = Yup.object().shape({
 const registerUser = ({ email, password, name }) => {
   try {
     signUp(email, password).then((user) => {
-      db.collection("users")
-        .doc(toString(user.user.uid))
-        .set({
-          name,
-          email,
-          uid: user.user.uid,
-        })
-        .then(() => {
-          console.log("docment created");
-        });
+      db.collection("users").doc(user.user.uid.toString()).set({
+        name,
+        email,
+        uid: user.user.uid,
+      });
     });
   } catch (error) {
     console.log(error);
