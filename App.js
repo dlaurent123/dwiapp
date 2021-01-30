@@ -13,8 +13,8 @@ const App = () => {
 
   const updateUser = (user) => {
     if (user) {
-      const { email, uid } = user;
-      setCurrentUser({ email, id: uid });
+      const { email, uid, displayName } = user;
+      setCurrentUser({ email, id: uid, name: displayName });
       getAuthToken().then((token) => {
         setToken(token);
       });
@@ -30,11 +30,13 @@ const App = () => {
     return unsubscribe;
   }, []);
 
+  const addUser = (user) => setCurrentUser(user);
+
   if (loading) return <AppLoading />;
 
   return (
     <>
-      <AuthContext.Provider value={{ currentUser, setCurrentUser, token }}>
+      <AuthContext.Provider value={{ currentUser, addUser, token }}>
         <Index />
       </AuthContext.Provider>
     </>

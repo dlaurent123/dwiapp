@@ -12,16 +12,22 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterScreen = () => {
-  const { setCurrentUser } = useContext(AuthContext);
+  const { addUser } = useContext(AuthContext);
 
   const registerUser = ({ email, password, name }) => {
     try {
       signUp(email, password).then((user) => {
-        db.collection("users").doc(user.user.uid.toString()).set({
-          name,
-          email,
-          uid: user.user.uid,
-        });
+        user.user.updateProfile({ displayName: name });
+        db.collection("users")
+          .doc(user.user.uid.toString())
+          .set({
+            name,
+            email,
+            uid: user.user.uid,
+          })
+          .then(() => {
+            addUser({ name, email, id: user.user.uid });
+          });
       });
     } catch (error) {
       console.log(error);

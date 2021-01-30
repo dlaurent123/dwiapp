@@ -28,7 +28,7 @@ const MyaccountScreen = ({ navigation }) => {
         <ListItem
           image={require("../assets/man-image.webp")}
           subTitle={currentUser.email}
-          title={"Nasir Dara"}
+          title={currentUser.name}
         />
       </View>
       <View style={styles.flatList}>
