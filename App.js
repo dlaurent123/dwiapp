@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <>
-      <AuthContext.Provider value={{ currentUser, token }}>
+      <AuthContext.Provider value={{ currentUser, setCurrentUser, token }}>
         <Index />
       </AuthContext.Provider>
     </>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AppForm, AppFormFeild, SubmitButton } from "../components/Forms";
 import Screen from "../components/Screen";
 import { signUp, db } from "../utiliy/firebaseFunctions";
 import * as Yup from "yup";
+import { AuthContext } from "../context";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -10,21 +11,23 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-const registerUser = ({ email, password, name }) => {
-  try {
-    signUp(email, password).then((user) => {
-      db.collection("users").doc(user.user.uid.toString()).set({
-        name,
-        email,
-        uid: user.user.uid,
-      });
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const RegisterScreen = () => {
+  const { setCurrentUser } = useContext(AuthContext);
+
+  const registerUser = ({ email, password, name }) => {
+    try {
+      signUp(email, password).then((user) => {
+        db.collection("users").doc(user.user.uid.toString()).set({
+          name,
+          email,
+          uid: user.user.uid,
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Screen>
       <AppForm
