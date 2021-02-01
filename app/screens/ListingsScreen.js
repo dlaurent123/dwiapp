@@ -19,28 +19,30 @@ const ListingsScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <Screen style={styles.screen}>
-      {hasError && (
-        <>
-          <Text>Couldn't retrieve the listings. </Text>
-          <AppButton title="retry" onPress={loadListings} />
-        </>
-      )}
+    <>
       <ActivityIndicator visible={isLoading} />
-      <FlatList
-        renderItem={({ item }) => (
-          <Card
-            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
-            imageUrl={item.images[0].url}
-            subTitle={`$${item.price}`}
-            title={item.title}
-            thumbnailUrl={item.images[0].thumbnailUrl}
-          />
+      <Screen style={styles.screen}>
+        {hasError && (
+          <>
+            <Text>Couldn't retrieve the listings. </Text>
+            <AppButton title="retry" onPress={loadListings} />
+          </>
         )}
-        keyExtractor={(listings) => listings.id.toString()}
-        data={listings}
-      />
-    </Screen>
+        <FlatList
+          renderItem={({ item }) => (
+            <Card
+              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+              imageUrl={item.images[0].url}
+              subTitle={`$${item.price}`}
+              title={item.title}
+              thumbnailUrl={item.images[0].thumbnailUrl}
+            />
+          )}
+          keyExtractor={(listings) => listings.id.toString()}
+          data={listings}
+        />
+      </Screen>
+    </>
   );
 };
 

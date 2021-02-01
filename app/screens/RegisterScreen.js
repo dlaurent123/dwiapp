@@ -9,6 +9,7 @@ import Screen from "../components/Screen";
 import { signUp, db } from "../utiliy/firebaseFunctions";
 import * as Yup from "yup";
 import { useState } from "react/cjs/react.development";
+import { AuthContext } from "../context";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -19,16 +20,22 @@ const validationSchema = Yup.object().shape({
 const RegisterScreen = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [visible, setIsVisisble] = useState(false);
+  const { addUser } = useContext(AuthContext);
 
   const registerUser = async ({ email, password, name }) => {
     try {
       await signUp(email, password).then((user) => {
         user.user.updateProfile({ displayName: name });
-        db.collection("users").doc(user.user.uid.toString()).set({
-          name,
-          email,
-          uid: user.user.uid,
-        });
+        db.collection("users")
+          .doc(user.user.uid.toString())
+          .set({
+            name,
+            email,
+            uid: user.user.uid,
+          })
+          .then(() => {
+            addUser({ name, email, id: user.user.uid });
+          });
       });
     } catch (error) {
       setIsVisisble(true);
