@@ -1,9 +1,14 @@
 import React, { useContext } from "react";
-import { AppForm, AppFormFeild, SubmitButton } from "../components/Forms";
+import {
+  AppForm,
+  AppFormFeild,
+  ErrorMessage,
+  SubmitButton,
+} from "../components/Forms";
 import Screen from "../components/Screen";
 import { signUp, db } from "../utiliy/firebaseFunctions";
 import * as Yup from "yup";
-import { AuthContext } from "../context";
+import { useState } from "react/cjs/react.development";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -12,25 +17,22 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterScreen = () => {
-  const { addUser } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [visible, setIsVisisble] = useState(false);
 
-  const registerUser = ({ email, password, name }) => {
+  const registerUser = async ({ email, password, name }) => {
     try {
-      signUp(email, password).then((user) => {
+      await signUp(email, password).then((user) => {
         user.user.updateProfile({ displayName: name });
-        db.collection("users")
-          .doc(user.user.uid.toString())
-          .set({
-            name,
-            email,
-            uid: user.user.uid,
-          })
-          .then(() => {
-            addUser({ name, email, id: user.user.uid });
-          });
+        db.collection("users").doc(user.user.uid.toString()).set({
+          name,
+          email,
+          uid: user.user.uid,
+        });
       });
     } catch (error) {
-      console.log(error);
+      setIsVisisble(true);
+      setErrorMessage(error.message);
     }
   };
 
@@ -41,6 +43,7 @@ const RegisterScreen = () => {
         onSubmit={registerUser}
         validationSchema={validationSchema}
       >
+        <ErrorMessage error={errorMessage} visible={visible} />
         <AppFormFeild
           autoCapitalize="none"
           autoCorrect={false}
