@@ -8,10 +8,27 @@ import NewListingButton from "../navigation/NewListingButton";
 import routes from "../navigation/routes";
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
+import { useEffect } from "react/cjs/react.development";
 
 const Tab = createBottomTabNavigator();
 
 const Appnavigator = () => {
+  const registerForPushNotifications = async () => {
+    try {
+      const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+      if (!permission.granted) return;
+
+      const token = await Notifications.getExpoPushTokenAsync();
+      console.log(token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    registerForPushNotifications();
+  }, []);
+
   return (
     <Tab.Navigator>
       <Tab.Screen
