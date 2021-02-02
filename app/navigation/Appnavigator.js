@@ -6,7 +6,7 @@ import AccountNavigator from "./AccountNavigation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NewListingButton from "../navigation/NewListingButton";
 import routes from "../navigation/routes";
-import { Notifications } from "expo";
+import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import { useEffect } from "react/cjs/react.development";
 
