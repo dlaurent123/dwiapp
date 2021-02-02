@@ -9,6 +9,7 @@ import routes from "../navigation/routes";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import { useEffect } from "react/cjs/react.development";
+import firebase from "../../firebase";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +20,6 @@ const Appnavigator = () => {
       if (!permission.granted) return;
 
       const token = await Notifications.getExpoPushTokenAsync();
-      console.log(token);
     } catch (error) {
       console.log(error);
     }
