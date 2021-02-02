@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NewListingButton from "../navigation/NewListingButton";
 import routes from "../navigation/routes";
 import { Notifications } from "expo";
+import * as Permissions from "expo-permissions";
 
 const Tab = createBottomTabNavigator();
 
