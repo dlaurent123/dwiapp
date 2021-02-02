@@ -8,18 +8,24 @@ import NewListingButton from "../navigation/NewListingButton";
 import routes from "../navigation/routes";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
-import { useEffect } from "react/cjs/react.development";
-import firebase from "../../firebase";
+import { useContext, useEffect } from "react/cjs/react.development";
+import { db } from "../utiliy/firebaseFunctions";
+import { AuthContext } from "../context";
 
 const Tab = createBottomTabNavigator();
 
 const Appnavigator = () => {
+  const { currentUser } = useContext(AuthContext);
+
   const registerForPushNotifications = async () => {
     try {
       const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
       if (!permission.granted) return;
 
       const token = await Notifications.getExpoPushTokenAsync();
+      await db.collection("users").doc(currentUser.id).update({
+        expoPushToken: token.data,
+      });
     } catch (error) {
       console.log(error);
     }
