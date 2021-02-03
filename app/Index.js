@@ -8,11 +8,12 @@ import { AuthContext } from "../app/context";
 
 const Index = () => {
   const { currentUser, token } = useContext(AuthContext);
-
+  const navigationRef = React.createRef();
+  const navigation = navigationRef.current;
   return (
     <>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {currentUser ? <Appnavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </>
