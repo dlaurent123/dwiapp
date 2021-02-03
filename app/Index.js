@@ -10,6 +10,7 @@ const Index = () => {
   const { currentUser, token } = useContext(AuthContext);
   const navigationRef = React.createRef();
   const navigation = navigationRef.current;
+
   return (
     <>
       <OfflineNotice />
