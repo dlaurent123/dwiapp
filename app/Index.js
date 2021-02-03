@@ -5,11 +5,10 @@ import AuthNavigator from "./navigation/AuthNavigator";
 import navigationTheme from "./navigation/navigationTheme";
 import Appnavigator from "./navigation/Appnavigator";
 import { AuthContext } from "../app/context";
+import { navigationRef } from "../App/navigation/rootNavigation";
 
 const Index = () => {
   const { currentUser, token } = useContext(AuthContext);
-  const navigationRef = React.createRef();
-  const navigation = navigationRef.current;
 
   return (
     <>
