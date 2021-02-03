@@ -6,40 +6,10 @@ import AccountNavigator from "./AccountNavigation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NewListingButton from "../navigation/NewListingButton";
 import routes from "../navigation/routes";
-import * as Notifications from "expo-notifications";
-import * as Permissions from "expo-permissions";
-import { useContext, useEffect } from "react/cjs/react.development";
-import { db } from "../utiliy/firebaseFunctions";
-import { AuthContext } from "../context";
-import navigation from "../navigation/rootNavigation";
 
 const Tab = createBottomTabNavigator();
 
 const Appnavigator = () => {
-  const { currentUser } = useContext(AuthContext);
-
-  const registerForPushNotifications = async () => {
-    try {
-      const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      if (!permission.granted) return;
-
-      const token = await Notifications.getExpoPushTokenAsync();
-      await db.collection("users").doc(currentUser.id).update({
-        expoPushToken: token.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    registerForPushNotifications();
-
-    Notifications.addNotificationResponseReceivedListener((n) => {
-      navigation.navigate("Account");
-    });
-  }, []);
-
   return (
     <Tab.Navigator>
       <Tab.Screen
