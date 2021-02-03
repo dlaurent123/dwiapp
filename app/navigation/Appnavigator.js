@@ -11,6 +11,7 @@ import * as Permissions from "expo-permissions";
 import { useContext, useEffect } from "react/cjs/react.development";
 import { db } from "../utiliy/firebaseFunctions";
 import { AuthContext } from "../context";
+import navigation from "../navigation/rootNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,10 @@ const Appnavigator = () => {
 
   useEffect(() => {
     registerForPushNotifications();
+
+    Notifications.addNotificationResponseReceivedListener((n) => {
+      navigation.navigate("Account");
+    });
   }, []);
 
   return (
