@@ -10,6 +10,7 @@ function ImageInputList({ imageUris = [], onRemoveImage, onAddImage }) {
       ref={scrollView}
       horizontal={true}
       onContentSizeChange={() => scrollView.current.scrollToEnd()}
+      style={{ flexGrow: 0 }}
     >
       <View style={styles.container}>
         {imageUris.map((uri) => (
