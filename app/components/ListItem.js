@@ -30,6 +30,11 @@ const ListItem = ({
             </Text>
             {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
           </View>
+          <MaterialCommunityIcons
+            color={colors.medium}
+            name={"chevron-right"}
+            size={25}
+          />
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -41,9 +46,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
     backgroundColor: colors.white,
+    alignItems: "center",
   },
 
   detailContainer: {
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },
