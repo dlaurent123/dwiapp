@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { Image } from "react-native-expo-image-cache";
+import colors from "../config/colors";
 
 const Card = ({ title, subTitle, imageUrl, onPress, thumbnailUrl }) => {
   return (
@@ -19,8 +20,10 @@ const Card = ({ title, subTitle, imageUrl, onPress, thumbnailUrl }) => {
           uri={imageUrl}
         />
         <View style={styles.detail}>
-          <Text numberOfLines={1}>{title}</Text>
-          <Text numberOfLines={2} style={{ color: "green" }}>
+          <Text style={styles.title} numberOfLines={1}>
+            {title}
+          </Text>
+          <Text style={styles.subTitle} numberOfLines={2}>
             {subTitle}
           </Text>
         </View>
@@ -43,6 +46,14 @@ const styles = StyleSheet.create({
   },
   detail: {
     padding: 20,
+  },
+  title: {
+    marginBottom: 7,
+  },
+
+  subTitle: {
+    color: colors.secondary,
+    fontWeight: "bold",
   },
 });
 
