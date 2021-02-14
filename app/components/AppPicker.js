@@ -16,7 +16,9 @@ import PickerItem from "./PickerItem";
 const AppPicker = ({
   items,
   icon,
+  numberOfColumns = 1,
   placeholder,
+  PickerItemComponent = PickerItem,
   onSelectItem,
   selectedItem,
   width = "100%",
@@ -52,7 +54,8 @@ const AppPicker = ({
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
+                item={item}
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
@@ -60,6 +63,7 @@ const AppPicker = ({
                 }}
               />
             )}
+            numColumns={numberOfColumns}
           />
         </Screen>
       </Modal>

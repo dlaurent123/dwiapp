@@ -7,10 +7,12 @@ import {
 } from "../components/Forms/index";
 import * as Yup from "yup";
 import Screen from "../components/Screen";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 import UploadScreen from "../screens/UploadScreen";
 import FormImagePicker from "../components/Forms/FormImagePicker";
 import { useLocation } from "../hooks/useLocation";
 import listingAPI from "../api/listings";
+import colors from "../config/colors";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().label("Title").required(),
@@ -21,9 +23,42 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-  { label: "Furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Electronics", value: 3 },
+  {
+    label: "Furniture",
+    backgroundColor: "#F78075",
+    icon: "floor-lamp",
+    value: 1,
+  },
+  {
+    label: "Clothing",
+    backgroundColor: "#66C6C5",
+    icon: "shoe-heel",
+    value: 2,
+  },
+  {
+    label: "Electronics",
+    backgroundColor: "#5C8CEE",
+    icon: "headphones",
+    value: 3,
+  },
+  {
+    label: "Games",
+    backgroundColor: "#70D295",
+    icon: "gamepad-variant-outline",
+    value: 4,
+  },
+  {
+    label: "Books",
+    backgroundColor: "#A97FED",
+    icon: "book-open-outline",
+    value: 5,
+  },
+  {
+    label: "Sports",
+    backgroundColor: "#66B1F4",
+    icon: "baseball",
+    value: 6,
+  },
 ];
 
 const ListingEditScreen = () => {
@@ -85,6 +120,8 @@ const ListingEditScreen = () => {
         <AppFormPicker
           items={categories}
           name={"category"}
+          numberOfColumns={3}
+          PickerItemComponent={CategoryPickerItem}
           placeholder={"Category"}
           width={"50%"}
         />
