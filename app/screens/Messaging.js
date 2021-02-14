@@ -8,14 +8,16 @@ import Screen from "../components/Screen";
 const messagesArr = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "Hey",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare pulvinar purus, non bibendum felis pharetra eget. Integer malesuada facilisis nisl et finibus. Vestibulum pellentesque risus nec molestie tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc vitae nisi nulla. Vestibulum vestibulum, sapien in convallis fringilla, enim nunc tempor felis, vel rhoncus est nulla id nunc. In bibendum ornare iaculis. Phasellus laoreet purus eget viverra efficitur. Duis suscipit metus ac dapibus feugiat. Ut id ligula eget neque euismod consectetur. Duis vitae ornare velit, malesuada commodo nisi. Fusce et libero vitae est ultricies suscipit.",
     image: require("../assets/man-image.webp"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "Hello",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare pulvinar purus, non bibendum felis pharetra eget. Integer malesuada facilisis nisl et finibus. Vestibulum pellentesque risus nec molestie tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc vitae nisi nulla. Vestibulum vestibulum, sapien in convallis fringilla, enim nunc tempor felis, vel rhoncus est nulla id nunc. In bibendum ornare iaculis. Phasellus laoreet purus eget viverra efficitur. Duis suscipit metus ac dapibus feugiat. Ut id ligula eget neque euismod consectetur. Duis vitae ornare velit, malesuada commodo nisi. Fusce et libero vitae est ultricies suscipit.",
     image: require("../assets/man-image.webp"),
   },
 ];
