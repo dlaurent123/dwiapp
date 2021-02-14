@@ -19,8 +19,10 @@ const Card = ({ title, subTitle, imageUrl, onPress, thumbnailUrl }) => {
           uri={imageUrl}
         />
         <View style={styles.detail}>
-          <Text numberOfLines={4}>{title}</Text>
-          <Text style={{ color: "green" }}>{subTitle}</Text>
+          <Text numberOfLines={1}>{title}</Text>
+          <Text numberOfLines={2} style={{ color: "green" }}>
+            {subTitle}
+          </Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
