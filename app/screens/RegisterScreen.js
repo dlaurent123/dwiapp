@@ -58,7 +58,7 @@ const RegisterScreen = () => {
           keyboardType={"default"}
           name={"name"}
           placeholder={"Name"}
-          textContentType="emailAddress"
+          textContentType="name"
         />
         <AppFormFeild
           autoCapitalize="none"

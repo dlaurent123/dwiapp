@@ -1,10 +1,11 @@
 import { presentNotificationAsync } from "expo-notifications";
 import React from "react";
-import { View, StyleSheet, Keyboard, Alert } from "react-native";
+import { Keyboard, Alert } from "react-native";
 import { send } from "../../api/messages";
-
 import AppForm from "./AppForm";
 import * as Yup from "yup";
+import AppFormFeild from "./AppFormFeild";
+import SubmitButton from "./SubmitButton";
 
 const validationSchema = Yup.object({
   message: Yup.string().required().label("Message"),
@@ -29,12 +30,22 @@ function ContactSeller({ listing }) {
     });
   };
   return (
-    <AppForm initialValues={{ message: "" }} onSubmit={handleSubmit}></AppForm>
+    <AppForm
+      initialValues={{ message: "" }}
+      onSubmit={handleSubmit}
+      validationSchema={validationSchema}
+    >
+      <AppFormFeild
+        autoCapitalize="none"
+        autoCorrect={false}
+        keyboardType={"default"}
+        name={"message"}
+        placeholder={"Message..."}
+        textContentType="none"
+      />
+      <SubmitButton title={"Contact Seller"} />
+    </AppForm>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default ContactSeller;
