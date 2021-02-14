@@ -1,6 +1,6 @@
 import { presentNotificationAsync } from "expo-notifications";
 import React from "react";
-import { Keyboard, Alert } from "react-native";
+import { Keyboard, Alert, View } from "react-native";
 import { send } from "../../api/messages";
 import AppForm from "./AppForm";
 import * as Yup from "yup";
@@ -30,21 +30,23 @@ function ContactSeller({ listing }) {
     });
   };
   return (
-    <AppForm
-      initialValues={{ message: "" }}
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-    >
-      <AppFormFeild
-        autoCapitalize="none"
-        autoCorrect={false}
-        keyboardType={"default"}
-        name={"message"}
-        placeholder={"Message..."}
-        textContentType="none"
-      />
-      <SubmitButton title={"Contact Seller"} />
-    </AppForm>
+    <View style={{ padding: 20 }}>
+      <AppForm
+        initialValues={{ message: "" }}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        <AppFormFeild
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType={"default"}
+          name={"message"}
+          placeholder={"Message..."}
+          textContentType="none"
+        />
+        <SubmitButton title={"Contact Seller"} />
+      </AppForm>
+    </View>
   );
 }
 
