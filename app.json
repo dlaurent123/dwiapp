@@ -4,7 +4,7 @@
     "slug": "dwiapp",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/assets/icon1.png",
     "splash": {
       "image": "./app/assets/splash.png",
       "resizeMode": "cover",
