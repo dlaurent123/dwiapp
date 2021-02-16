@@ -34,7 +34,9 @@ const ListingDetails = ({ route }) => {
             />
           </View>
         </View>
-        <ContactSeller listing={listing} />
+        {listing.userId !== currentUser.id && (
+          <ContactSeller listing={listing} />
+        )}
       </View>
     </KeyboardAvoidingView>
   );
