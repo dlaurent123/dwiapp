@@ -28,6 +28,19 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": "A market place for selling the stuff that we do not need anymore."
+    "description": "A market place for selling the stuff that we do not need anymore.",
+    "extra": {
+      "bugsnag": {
+        "apiKey": "07abc678fb7fd1f098f03566a3389f68"
+      }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
+    }
   }
 }

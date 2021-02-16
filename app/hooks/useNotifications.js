@@ -4,6 +4,7 @@ import * as Permissions from "expo-permissions";
 import { db } from "../utiliy/firebaseFunctions";
 import { AuthContext } from "../context";
 import navigation from "../navigation/rootNavigation";
+import logger from '../utiliy/logger';
 
 
 const useNotifications = (notificationListener) => {
@@ -19,6 +20,7 @@ const useNotifications = (notificationListener) => {
         expoPushToken: token.data,
       });
     } catch (error) {
+      logger.log(error)
       console.log(error);
     }
   };

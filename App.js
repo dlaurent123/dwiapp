@@ -5,6 +5,8 @@ import Index from "./app/Index";
 import { AuthContext } from "./app/context";
 import { getAuthToken } from "./app/utiliy/firebaseFunctions";
 import AppLoading from "expo-app-loading";
+import logger from "./app/utiliy/logger";
+logger.start();
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
