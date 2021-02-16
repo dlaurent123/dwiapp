@@ -6,8 +6,9 @@ import ContactSeller from "../components/Forms/ContactSeller";
 import { useContext } from "react";
 import { AuthContext } from "../context";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 
-const ListingDetails = ({ route }) => {
+const ListingDetails = ({ route, navigation }) => {
   const listing = route.params;
   const { currentUser } = useContext(AuthContext);
 
@@ -28,6 +29,7 @@ const ListingDetails = ({ route }) => {
           <Text style={styles.price}>{`$${listing.price}`}</Text>
           <View style={styles.userContainer}>
             <ListItem
+              onPress={() => navigation.navigate(routes.MY_LISTINGS)}
               subTitle={"5 Listings"}
               title={currentUser.name}
               image={require("../assets/man-image.webp")}

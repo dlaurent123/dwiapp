@@ -4,6 +4,7 @@ import ListItem from "../components/ListItem";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
 import ListItemSeparator from "../components/ListItemSeparator";
 import Screen from "../components/Screen";
+import routes from "../navigation/routes";
 
 const messagesArr = [
   {
@@ -22,7 +23,7 @@ const messagesArr = [
   },
 ];
 
-const Messaging = () => {
+const Messaging = ({ navigation }) => {
   const [messages, setMessages] = useState(messagesArr);
   const [refreshing, setRefreshing] = useState(false);
   const handleDelete = (message) => {
@@ -38,7 +39,7 @@ const Messaging = () => {
             rightActions={() => (
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
             )}
-            onPress={() => console.log()}
+            onPress={() => navigation.navigate(routes.MY_MESSAGES)}
             image={item.image}
             subTitle={item.description}
             title={item.title}

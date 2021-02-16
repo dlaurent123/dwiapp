@@ -15,7 +15,7 @@ const menueItems = [
   {
     title: "My Messages",
     icon: { name: "email", backgroundColor: colors.secondary },
-    targetScreen: "Messaging",
+    targetScreen: "Messages",
   },
 ];
 
