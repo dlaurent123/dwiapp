@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import AppFormFeild from "./AppFormFeild";
 import SubmitButton from "./SubmitButton";
 import { AuthContext } from "../../context";
+import logger from "../../utiliy/logger";
 
 const validationSchema = Yup.object({
   message: Yup.string().required().label("Message"),
@@ -23,6 +24,7 @@ function ContactSeller({ listing }) {
     const res = await apiClient.send(message, listing.id, token);
 
     if (!res.ok) {
+      logger.log(res);
       console.log("Error", res);
       return Alert.alert("Error", "Could not send message to user");
     }
