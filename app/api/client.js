@@ -1,8 +1,9 @@
 import { create } from "apisauce";
+import settings from "../config/settings";
 import cache from "../utiliy/cache";
 
 const apiClient = create({
-  baseURL: "http://192.168.1.4:9000/api",
+  baseURL: settings.apiUrl,
 });
 
 const get = apiClient.get;
