@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
 
 function MyMessagesScreen({ navigation }) {
-  //   useEffect(() => {
-  //     navigation.setOptions({ title: "new new " });
-  //   });
+  // useEffect(() => {
+  //   navigation.setOptions({ title: "new new " });
+  // });
 
   // add a listener to this screen from firebase to query all names of current chats and the last message (which will be displayed as the subtitle)
 
